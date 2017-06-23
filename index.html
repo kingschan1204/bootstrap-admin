@@ -84,6 +84,10 @@
             return;
         }
         messageBox.showLoading("正在登录请稍后...");
+        setTimeout(function () {
+            window.location="./page/main.html";
+        }, 1000);
+
     });
     $('#loginform').bootstrapValidator({
         message: 'This value is not valid',
