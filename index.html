@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>bootadmin登录</title>
+    <!--<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">-->
+    <script src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+    <link href="//cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link href="www/bootadmin/css/login.css" rel="stylesheet">
+    <!--sweetalert2-->
+    <link href="//cdn.bootcss.com/limonte-sweetalert2/6.6.5/sweetalert2.min.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/limonte-sweetalert2/6.6.5/sweetalert2.min.js"></script>
+    <!--switchery-->
+    <link href="//cdn.bootcss.com/switchery/0.8.2/switchery.min.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/switchery/0.8.2/switchery.min.js"></script>
+    <!--notify-->
+    <!--<script src="//cdn.bootcss.com/mouse0270-bootstrap-notify/3.1.7/bootstrap-notify.min.js"></script>-->
+    <script src="www/bootadmin/js/messageBox.js"></script>
+    <!--validation-->
+    <link href="//cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap-validator/0.5.3/js/language/zh_CN.min.js"></script>
+
+</head>
+<body>
+<body class="login-page">
+<main>
+    <div class="login-block">
+        <a href="#"><img src="./www/bootadmin/res/profile.jpg" class="img-circle"
+                         alt="bootstrap-admin" data-toggle="tooltip"
+                         data-placement="bottom" title="bootstrap-admin"></a>
+        <h1>
+            欢迎使用 bootstrap-admin
+        </h1>
+        <form action="" method="post" role="form" id="loginform">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input type="text" class="form-control" id="loginuser" name="loginuser" required
+                           placeholder="帐号">
+                </div>
+            </div>
+            <hr class="hr-xs">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input type="password" class="form-control" id="loginpwd" name="loginpwd" required
+                           placeholder="密码">
+                </div>
+            </div>
+            <hr class="hr-xs">
+            <div class="form-group">
+                <div class="input-group">
+                    <p style="margin-top: 10px;"><input name="remember" type="checkbox" class="js-switch" />（记住密码）</p>
+                </div>
+            </div>
+            <button id="loginButton" class="btn btn-block" type="submit"><i class="glyphicon glyphicon-send"></i> 马上登录</button>
+        </form>
+    </div>
+</main>
+<script>
+    $("[data-toggle='tooltip']").tooltip();
+    defaults = {
+        size: 'small'
+        , color : '#64bd63' //开关打开的颜色
+        , secondaryColor : '#FF6666' //开关关闭的颜色
+        , className : 'switchery'//开关的名称
+        , disabled : false //开关是否可用
+        , disabledOpacity: 0.5 //开关的透明度
+        , speed : '0.5s' //开关的动画时间
+    }
+    var elem = document.querySelector('.js-switch');
+    var init = new Switchery(elem, defaults);
+
+    $("#loginButton").click(function(){
+        //获取表单对象
+        var $bootstrapValidator = $("#loginform").data('bootstrapValidator');
+        //手动触发验证
+        $bootstrapValidator.validate();
+        // 如果验证未通过,则不继续提交
+        if (!$bootstrapValidator.isValid()) {
+            return;
+        }
+        messageBox.showLoading("正在登录请稍后...");
+    });
+    $('#loginform').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            loginuser: {
+                validators: {
+                    notEmpty: {
+                        message: '账号不能为空'
+                    },
+                    stringLength:{
+                        message: '账号大于25个字符',
+                        min:0,
+                        max:25
+                    }
+                }
+            },
+            loginpwd: {
+                validators: {
+                    notEmpty: {
+                        message: '密码不能为空'
+                    }
+                }
+            }
+        }
+    });
+</script>
+</body>
+
+</body>
+</html>

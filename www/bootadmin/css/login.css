@@ -1,0 +1,66 @@
+body {
+    background-color: #e5e7ed;
+    background: url('../../../www/bootadmin/res/login-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.signin {
+    height: auto;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: rgba(255, 255, 255, .95)
+}
+.signinpanel {
+    width: 750px;
+    margin: 10% auto 0
+}
+.login-page main {
+    position: absolute;
+    width: 100%;
+    max-width: 460px;
+    right:0;
+    left:0;
+    bottom:0;
+    top:10%;
+    margin:auto;
+}
+.login-block {
+    background-color: #fff;
+    padding: 60px;
+    box-shadow: 0 3px 50px 0 rgba(0, 0, 0, .1);
+    text-align: center;
+    border-radius: 5px;
+}
+.login-block h1 {
+    font-size: 16px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+    color: gray;
+}
+.login-links {
+    padding: 15px 5px 0;
+    font-size: 13px;
+    color: #96a2b2;
+}
+.chklab {
+    color: gray;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: normal;
+    display: inline;
+}
+.btn {
+    line-height: 42px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border-color: #ef5350;
+    padding: 0 30px;
+    color: #fff;
+    background-color: #ef5350;
+    transition: all .4s ease;
+    box-shadow: 0px 0px 4px #868282;
+    border-radius: 2em;
+}
